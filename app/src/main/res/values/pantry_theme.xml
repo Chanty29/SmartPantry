@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Always-light Material theme so every screen looks consistent. -->
+    <style name="Theme.PantryApp" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        <item name="colorPrimary">@color/pantry_primary</item>
+        <item name="colorPrimaryVariant">@color/pantry_primary_dark</item>
+        <item name="colorOnPrimary">@color/pantry_white</item>
+        <item name="colorSecondary">@color/pantry_accent</item>
+        <item name="colorOnSecondary">@color/pantry_white</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <item name="android:windowBackground">@color/pantry_background</item>
+    </style>
+</resources>
