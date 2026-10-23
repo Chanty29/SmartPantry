@@ -11,6 +11,18 @@
         android:orientation="vertical"
         android:padding="20dp">
 
+        <!-- Optional recipe photo (hidden when the recipe has no photo file) -->
+        <ImageView
+            android:id="@+id/imageRecipeHeader"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/bg_photo_round"
+            android:clipToOutline="true"
+            android:contentDescription="@string/recipe_photo"
+            android:scaleType="centerCrop"
+            android:visibility="gone" />
+
         <TextView
             android:id="@+id/textRecipeTitle"
             android:layout_width="match_parent"

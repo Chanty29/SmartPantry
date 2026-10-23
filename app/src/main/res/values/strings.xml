@@ -14,7 +14,13 @@
     <string name="nav_settings">Settings</string>
 
     <!-- Pantry list -->
-    <string name="empty_pantry">Your pantry is empty.\nTap + to add your first ingredient.</string>
+    <string name="empty_pantry">Your pantry is empty\n\n1. Tap the + button and add what you have at home\n2. Check the Recipes tab to see what you can cook\n3. Use items up before they expire</string>
+    <string name="banner_title">What\'s in your kitchen?</string>
+    <string name="banner_subtitle">Add what you have and we\'ll show you what you can cook, with nothing extra to buy.</string>
+    <string name="banner_button">See what I can cook →</string>
+    <string name="stat_stock">%1$d in stock</string>
+    <string name="stat_expiring">%1$d expiring</string>
+    <string name="stat_to_cook">%1$d to cook</string>
     <string name="add_ingredient">Add ingredient</string>
     <string name="delete_ingredient">Delete ingredient</string>
     <string name="no_expiry">No expiry date</string>
@@ -53,6 +59,7 @@
     <string name="no_almost_recipes">No recipes are missing just one ingredient right now</string>
     <string name="ingredient_count">%1$d ingredients</string>
     <string name="missing_label">Missing: %1$s</string>
+    <string name="recipe_photo">Photo of the recipe</string>
     <string name="recipe_not_found">Recipe not found</string>
     <string name="label_ingredients">Ingredients</string>
     <string name="label_method">Method</string>

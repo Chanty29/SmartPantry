@@ -1,11 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="pantry_primary">#2E7D32</color>
-    <color name="pantry_primary_dark">#1B5E20</color>
-    <color name="pantry_accent">#FF8F00</color>
-    <color name="pantry_background">#F5F7F2</color>
-    <color name="pantry_text_primary">#1F2A1F</color>
-    <color name="pantry_text_secondary">#5F6B5F</color>
-    <color name="pantry_warning">#C62828</color>
+    <color name="pantry_primary">#00796B</color>
+    <color name="pantry_primary_dark">#004D40</color>
+    <color name="pantry_accent">#FF6F61</color>
+    <color name="pantry_background">#F2F8F7</color>
+    <color name="pantry_text_primary">#12302D</color>
+    <color name="pantry_text_secondary">#5B7471</color>
+    <color name="pantry_warning">#D32F2F</color>
     <color name="pantry_white">#FFFFFF</color>
+
+    <!-- Freshness colours used by the pantry list strip -->
+    <color name="pantry_ok">#2E9E6B</color>
+    <color name="pantry_soon">#F9A825</color>
+
+    <!-- Banner + badges -->
+    <color name="pantry_banner_start">#004D40</color>
+    <color name="pantry_banner_end">#26A69A</color>
+    <color name="pantry_banner_subtitle">#D5F0EC</color>
+    <color name="pantry_chip_overlay">#33FFFFFF</color>
+    <color name="pantry_badge_bg">#E0F2F1</color>
 </resources>

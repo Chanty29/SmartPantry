@@ -1,6 +1,8 @@
 package com.example.smartpantry;
 
 import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -44,6 +46,14 @@ public class RecipeDetailActivity extends AppCompatActivity {
         }
 
         setTitle(recipe.getName());
+
+        // Optional photo at the top (only shown when the project has a photo for this recipe)
+        int photo = RecipePhotos.photoResId(this, recipe.getName());
+        if (photo != 0) {
+            ImageView header = findViewById(R.id.imageRecipeHeader);
+            header.setImageResource(photo);
+            header.setVisibility(View.VISIBLE);
+        }
         ((TextView) findViewById(R.id.textRecipeTitle)).setText(recipe.getName());
 
         // Compare the recipe with the current pantry using the same strict logic.

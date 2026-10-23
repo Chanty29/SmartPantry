@@ -3,6 +3,7 @@ package com.example.smartpantry;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -52,6 +53,18 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final Recipe recipe = recipes.get(position);
         holder.textName.setText(recipe.getName());
+        holder.textInitial.setText(Initials.of(recipe.getName()));
+
+        // Real photo if the project has one for this recipe, otherwise the letter avatar
+        int photo = RecipePhotos.photoResId(holder.itemView.getContext(), recipe.getName());
+        if (photo != 0) {
+            holder.imagePhoto.setImageResource(photo);
+            holder.imagePhoto.setVisibility(View.VISIBLE);
+            holder.textInitial.setVisibility(View.INVISIBLE);
+        } else {
+            holder.imagePhoto.setVisibility(View.GONE);
+            holder.textInitial.setVisibility(View.VISIBLE);
+        }
         holder.textInfo.setText(holder.itemView.getContext().getString(
                 R.string.ingredient_count, recipe.getIngredients().size()));
 
@@ -71,12 +84,16 @@ public class RecipeAdapter extends RecyclerView.Adapter<RecipeAdapter.ViewHolder
     }
 
     static class ViewHolder extends RecyclerView.ViewHolder {
+        final ImageView imagePhoto;
+        final TextView textInitial;
         final TextView textName;
         final TextView textInfo;
         final TextView textNote;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
+            imagePhoto = itemView.findViewById(R.id.imageRecipe);
+            textInitial = itemView.findViewById(R.id.textRecipeInitial);
             textName = itemView.findViewById(R.id.textRecipeName);
             textInfo = itemView.findViewById(R.id.textRecipeInfo);
             textNote = itemView.findViewById(R.id.textRecipeNote);
