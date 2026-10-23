@@ -45,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements PantryAdapter.Lis
         fabAdd.setOnClickListener(v ->
                 startActivity(new Intent(MainActivity.this, AddEditIngredientActivity.class)));
 
+        BottomNavigationView nav = findViewById(R.id.bottomNav);
+        NavHelper.setup(this, nav, R.id.nav_pantry);
     }
 
     /** Reload from the database every time the screen comes back into view. */

@@ -68,7 +68,8 @@ public class SuggestedRecipesActivity extends AppCompatActivity implements Recip
             @Override
             public void onTabReselected(TabLayout.Tab tab) { }
         });
-
+        BottomNavigationView nav = findViewById(R.id.bottomNav);
+        NavHelper.setup(this, nav, R.id.nav_recipes);
 
     }
 
