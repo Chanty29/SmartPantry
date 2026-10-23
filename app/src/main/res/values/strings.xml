@@ -21,6 +21,10 @@
     <string name="stat_stock">%1$d in stock</string>
     <string name="stat_expiring">%1$d expiring</string>
     <string name="stat_to_cook">%1$d to cook</string>
+    <string name="expiring_title">Expiry check</string>
+    <string name="expired_header">Already expired:</string>
+    <string name="soon_header">Expiring within 3 days:</string>
+    <string name="nothing_expiring">Nothing is expired or expiring soon.</string>
     <string name="add_ingredient">Add ingredient</string>
     <string name="delete_ingredient">Delete ingredient</string>
     <string name="no_expiry">No expiry date</string>

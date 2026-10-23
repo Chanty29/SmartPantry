@@ -17,6 +17,7 @@ import com.example.smartpantry.model.PantryItem;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,6 +34,7 @@ public class MainActivity extends AppCompatActivity implements PantryAdapter.Lis
     private TextView textStatStock;
     private TextView textStatSoon;
     private TextView textStatCook;
+    private List<PantryItem> currentItems = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +55,9 @@ public class MainActivity extends AppCompatActivity implements PantryAdapter.Lis
         FloatingActionButton fabAdd = findViewById(R.id.fabAdd);
         fabAdd.setOnClickListener(v ->
                 startActivity(new Intent(MainActivity.this, AddEditIngredientActivity.class)));
+
+        // Tapping the "expiring" chip lists exactly which items are expired / expiring soon
+        textStatSoon.setOnClickListener(v -> showExpiringDialog());
 
         // Banner button: jump straight to the suggested recipes
         findViewById(R.id.buttonSeeRecipes).setOnClickListener(v ->
@@ -78,6 +83,7 @@ public class MainActivity extends AppCompatActivity implements PantryAdapter.Lis
 
     /** Fills the three stat chips in the banner. */
     private void updateBanner(List<PantryItem> items) {
+        currentItems = items;
         int expiringSoon = 0;
         for (PantryItem item : items) {
             if (item.isExpiringSoon(AppPrefs.EXPIRY_WINDOW_DAYS)) {
@@ -89,6 +95,38 @@ public class MainActivity extends AppCompatActivity implements PantryAdapter.Lis
         textStatStock.setText(getString(R.string.stat_stock, items.size()));
         textStatSoon.setText(getString(R.string.stat_expiring, expiringSoon));
         textStatCook.setText(getString(R.string.stat_to_cook, recipesReady));
+    }
+
+    /** Dialog listing the expired items and the ones expiring within the warning window. */
+    private void showExpiringDialog() {
+        StringBuilder expired = new StringBuilder();
+        StringBuilder soon = new StringBuilder();
+        for (PantryItem item : currentItems) {
+            if (item.getExpiryDate().isEmpty() || !item.isExpiringSoon(AppPrefs.EXPIRY_WINDOW_DAYS)) {
+                continue;
+            }
+            String line = "\u2022 " + item.getName() + " (" + item.getExpiryDate() + ")\n";
+            if (item.daysUntilExpiry() < 0) {
+                expired.append(line);
+            } else {
+                soon.append(line);
+            }
+        }
+        StringBuilder message = new StringBuilder();
+        if (expired.length() > 0) {
+            message.append(getString(R.string.expired_header)).append('\n').append(expired).append('\n');
+        }
+        if (soon.length() > 0) {
+            message.append(getString(R.string.soon_header)).append('\n').append(soon);
+        }
+        if (message.length() == 0) {
+            message.append(getString(R.string.nothing_expiring));
+        }
+        new AlertDialog.Builder(this)
+                .setTitle(R.string.expiring_title)
+                .setMessage(message.toString().trim())
+                .setPositiveButton(android.R.string.ok, null)
+                .show();
     }
 
     @Override
